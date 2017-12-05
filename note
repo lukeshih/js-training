@@ -1,0 +1,38 @@
+nodejs
+express
+event trigger
+class, prototype
+http, rest
+
+f2e
+
+GET /drink/tea
+GET /drink/tea/{tea_id}
+POST /drink/tea
+PUT /drink/tea/{tea_id}
+DELETE /drink/tea/{tea_id}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+$.ajax({
+  method: "POST",
+  url: "some.php",
+  data: { name: "John", location: "Boston" }
+})
+.done(function( msg ) {
+  alert( "Data Saved: " + msg );
+});
+
+
+?name=tea&color=red
+
+
+
+HTTP POST
+
+<xml>
+<envlope>
+<cmd>setTea</cmd>
+<name>tea</name>
+<color>red</color>
+

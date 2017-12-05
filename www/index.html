@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <title>orz</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      let count = 0;
+
+      $(document).ready(() => {
+        $("#getTeaBtn").on('click', () => {
+          sendGetTea();
+        });
+
+        $("#setTeaBtn").on('click', () => {
+          sendSetTea();
+        });
+      });
+
+      function sendGetTea(){
+        console.log("sendGetTea");
+
+        $.ajax({
+          method: "GET",
+          url: "/drink/tea"
+        })
+        .done(function( msg ) {
+          console.log( msg );
+          $("#result").html(JSON.stringify(msg));
+        });
+
+      }
+
+      function sendSetTea(){
+        let packet = {
+          "name": $("#teaName").val(),
+          "cal": $("#teaCal").val()
+        }
+
+        $.ajax({
+          method: "POST",
+          url: "/drink/tea",
+          data: JSON.stringify(packet),
+          contentType: "application/json; charset=utf-8"
+        })
+        .done(function( msg ) {
+          console.log( msg );
+        });
+      }
+
+    
+    </script>
+  </head>
+  <body>
+    <div id="counter"></div>
+    <label for="teaName">Name: </label><input id="teaName" type="input"></input>
+    <label for="teaCal">Cal: </label><input id="teaCal" type="input"></input>
+    <button id="setTeaBtn">SET New Tea</button>
+    <hr>
+    <button id="getTeaBtn">GET Tea</button>
+    <div id="result"></div>
+  </body>
+</html>
